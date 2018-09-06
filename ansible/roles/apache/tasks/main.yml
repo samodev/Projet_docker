@@ -1,0 +1,17 @@
+---
+# tasks file for apache
+
+- name: Installing httpd (Apache)
+  yum:
+    name: httpd
+    state: latest
+  register: Output
+
+- name: start service httpd - if install succeeded
+  service:
+    name: httpd
+    state: started
+  when: Output is succeeded
+  notify:
+  - restart apache
+...

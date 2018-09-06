@@ -1,0 +1,11 @@
+---
+- name: Installer Java / apache / tomcat
+  hosts: 127.0.0.1
+  remote_user: root
+  become: true
+
+  roles:
+    - java
+    - apache
+    - tomcat
+...

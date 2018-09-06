@@ -1,0 +1,6 @@
+---
+# vars file for tomcat
+
+port_tomcat: 8089
+
+...

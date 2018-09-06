@@ -1,0 +1,39 @@
+---
+# tasks file for tomcat
+
+- name: Telechargement de Tomcat
+  get_url:
+    url=http://wwwftp.ciril.fr/pub/apache/tomcat/tomcat-9/v9.0.11/bin/apache-tomcat-9.0.11.tar.gz
+    dest=/tmp/apache-tomcat-9.0.11.tar.gz
+
+- name: Extraction de Tomcat
+  unarchive:
+    src: /tmp/apache-tomcat-9.0.11.tar.gz
+    dest: /opt/tomcat/
+
+- name: changer les droits et les owners sur le dossier tomcat
+  file:
+    path: /opt/tomcat/apache-tomcat-9.0.11
+    state: directory
+    owner: tomcat
+    group: apache
+    mode: 0755
+    recurse: yes
+
+- name: changer le port de tomcat en utilisant le template j2
+  template:
+    src: templates/server.xml.j2
+    dest: /opt/tomcat/apache-tomcat-9.0.11/conf/server.xml
+
+- name: ajouter le fichier de service tomcat
+  template:
+    src: templates/tomcat.service.j2
+    dest: /etc/systemd/system/tomcat.service
+
+- name: Demarrage de l'instance
+  systemd:
+    name: tomcat
+    enabled: yes
+    state: started
+  daemon_reload: yes
+...
