@@ -13,7 +13,7 @@ pipeline {
 		}
 		stage('Maven Clean') {
 			steps {
-				sh "mvn clean app/"
+				sh "mvn clean"
 			}
 		}
 		stage('parallel tests') {
