@@ -13,19 +13,19 @@ pipeline {
 		}
 		stage('Maven Clean') {
 			steps {
-				sh "sudo mvn clean"
+				sh "/usr/local/maven/bin/mvn clean /app"
 			}
 		}
 		stage('parallel tests') {
 				parallel {
 					stage('Maven test') {
 						steps {
-							sh "mvn test /app"
+							sh "/usr/local/maven/bin/mvn test /app"
 						}
 					}
 					stage('checkstyle') {
 						steps {
-							sh "mvn checkstyle:checkstyle /app"
+							sh "/usr/local/maven/bin/mvn checkstyle:checkstyle /app"
 						}
 						post {
 							always {
@@ -37,12 +37,12 @@ pipeline {
 		}
 		stage('Maven build') {
 			steps {
-				sh "mvn package /app"
+				sh "/usr/local/maven/bin/mvn package /app"
 			}
 		}
 		stage('Maven deploy') {
 			steps {
-				sh "mvn deploy /app"
+				sh "/usr/local/maven/bin/mvn deploy /app"
 			}
 		}		
 	}

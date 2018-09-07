@@ -17,8 +17,12 @@ ENV JAVA_HOME /usr/lib/jvm/java-1.8.0/
 
 RUN sudo touch /etc/profile.d/maven.sh
 
-RUN sudo echo $'export M2_HOME=/usr/local/maven \n\
+RUN sudo echo $'export M2_HOME=/usr/local/maven/ \n\
 export PATH=${M2_HOME}/bin:${PATH}' > /etc/profile.d/maven.sh
+
+ENV M2_HOME /usr/local/maven/
+
+ENV PATH /usr/local/maven/bin:$PATH
 
 RUN source /etc/profile.d/maven.sh
 
