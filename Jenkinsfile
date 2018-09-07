@@ -1,5 +1,8 @@
 pipeline {
 	agent any
+	tools {
+		maven 'maven3'
+	}
 	stages {
 		stage('Git Clone') {
 			steps {
@@ -13,7 +16,7 @@ pipeline {
 		}
 		stage('Maven Clean') {
 			steps {
-				sh "mvn clean"
+				sh "sudo mvn clean"
 			}
 		}
 		stage('parallel tests') {
