@@ -1,7 +1,7 @@
 pipeline {
 	agent any
 	tools {
-		Maven 'maven3'
+		maven 'Maven 3.5.4'
 	}
 	stages {
 		stage('Git Clone') {
