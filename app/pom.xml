@@ -24,8 +24,8 @@
  <distributionManagement>
     <snapshotRepository>
       <id>artifactory</id>
-      <name>32f4d15969ab-snapshots</name>
-      <url>http://172.17.0.3:8081/artifactory/maven-devopsapp-local</url>
+      <name>artifactory-snapshots</name>
+      <url>http://172.17.0.3:8081/maven-devopsapp-local</url>
     </snapshotRepository>
   </distributionManagement>
 
