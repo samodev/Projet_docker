@@ -44,6 +44,12 @@ pipeline {
 			steps {
 				sh "/usr/local/maven/bin/mvn deploy -f app/"
 			}
+		}
+		stage('launch playbook') {
+			steps {
+				sh "cd ansible && ansible-playbook -i environment/dev/inventory.yml install-app.yml --private-key ssh/id_rsa"
+			}
+
 		}		
 	}
 }
