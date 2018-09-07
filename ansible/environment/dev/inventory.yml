@@ -1,0 +1,3 @@
+[applications]
+172.18.0.10 ansible_ssh_user=tomcat
+172.18.0.11 ansible_ssh_user=tomcat

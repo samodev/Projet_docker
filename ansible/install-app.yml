@@ -1,8 +1,8 @@
 ---
 - name: Installer Java / apache / tomcat
-  hosts: 127.0.0.1
-  remote_user: root
-  become: true
+  hosts: applications
+  become: yes
+  become_user: root
 
   roles:
     - java
